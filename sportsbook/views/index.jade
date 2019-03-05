@@ -1,0 +1,23 @@
+extends layout
+
+block head
+  script(type='text/javascript' src='/javascripts/controllers/MemberController.js')
+  meta(name="foo2")
+  meta(name="bar")
+
+block content
+  div.container(ng-controller="MemberController", ng-init="setMembers( #{JSON.stringify(groupMembers)} )")
+    h1= title
+    h1 foo bar
+    p Welcome to #{title}
+  
+    h3 Likes node
+    div.row(ng-repeat="member in members | filter:likesNodeFilter")
+      div
+        input(type="checkbox", ng-model="member.likesNode", checked="true")
+        | {{member.fname}} {{member.lname}}
+    h3 Hates node
+    div.row(ng-repeat="member in members | filter:hatesNodeFilter")
+      div
+        input(type="checkbox", ng-model="member.likesNode")
+        | {{member.fname}} {{member.lname}

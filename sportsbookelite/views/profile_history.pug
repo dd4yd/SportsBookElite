@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h1 #{title} - #{session.user.fname} #{session.user.lname}
+
+    h2 Profile History 
+    dl
+      dt Total Bets Won:
+        dd #{history.totalBetsWon}
+      dt Total Bets Lost:
+        dd #{history.totalBetsLost}
+      dt Total Bets Pushed:
+        dd #{history.totalBetsPushed}
+      Total Winnings:
+        dd $#{history.totalWinnings}
+      dt Total Losings:
+        dd $#{history.totalLosings}
+      dt Open Bets
+        dd TODO
+
+    a(href="/profile") Back

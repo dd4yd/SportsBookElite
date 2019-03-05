@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1= title
+    a(href="/profile") Return
+    |  to profile home
+
+    ul
+        each user in user_list
+            li
+                a(href=user.url) #{user.name}
+                |  (#{user.userType})
+        else
+            li Currently no users.

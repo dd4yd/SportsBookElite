@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  h1 API Quick Reference 
+  p This page serves as a reference for how to use the site's internal API.
+  p All of these functions will either return JSON encoded collections on success, or an empty set or specific error on failure. If a specific error is returned, it will be returned as a JSON object containing both an error number and a string describing the nature of the error.
+
+  h2 Supported functions
+  p These are the current functions supported by the API.
+  
+  h4 Get Lines by league
+  pre /league/#{'<league acronymn>'}
+  p Example: 
+    a(href="/api/league/nhl") /api/league/nhl
+  p Notes:
+  ul
+    li League acronymn is #[b not] case sensitive. e.g /league/nba and /league/NBA are equivalent.
+
+  h4 Get Lines by league & team
+  pre /league/#{'<league acronymn>'}/team/#{'<team name>'}
+  p Example: 
+    a(href="/api/league/nfl/team/Philadelphia Eagles") /api/league/nfl/team/Philadelphia Eagles
+  p Notes:
+  ul
+    li League acronymn is once again #[b not] case sensitive.
+    li However, the team name #[b IS] case sensitive. It also must be fully spelled out. e.g "Philadelphia Eagles" is accepted but "Eagles" is not.
+
+  h4 Get Line by ObjectId
+  pre /by-id/#{'<object id>'}
+  p Example: 
+    a(href="/api/by-id/5c7734e469bd37d89a79f090") /api/by-id/5c7734e469bd37d89a79f090
+  p Notes:
+  ul
+    li This ID is a MongoDB object ID and needs to be of appropriate format.
+
+  h4 Get Line by remote API id
+  pre /by-api-id/#{'<API id>'}
+  p Example: 
+    a(href="/api/by-api-id/c4d94f8c-e5cf-4ec5-915c-6b36aa2adea9") /api/by-api-id/c4d94f8c-e5cf-4ec5-915c-6b36aa2adea9
+  p Notes:
+  ul
+    li This ID is a specific API key for the remote API, it must be of appropriate format.
+
+  h4 Get open bets for logged in User
+  pre /openbets
+  p Example: 
+    a(href="/api/openbets") /api/openbets
+  p Notes:
+  ul
+    li For security reasons, the User id is pulled from the session data rather than specified in the URL. Due to this, you cannot request open bet data for any other user than the one you are logged in as. Further, you also are unable to get any open bet data while not logged in.
+
+  if session.user
+    h3 You are currently logged in
+    p Welcome, #{session.user.fname}.
+    a(href="/logout") Log out
+  else
+    h3 You are #[u not] logged in
+    a(href="/login") Log in now

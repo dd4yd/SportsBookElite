@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    h1 #{title} - #{user.name}
+    p Profile page for #[em #{user.name}] currently stored.
+    p
+      a(href="/profile/history") History
+      |  - 
+      a(href="/profile/update") Edit Profile
+      |  - 
+      a(href="/logout") Logout
+
+    h2 Profile Details
+    dl
+      dt ID:
+        dd
+          a(href=user.url) #{user._id}
+      dt Email:
+        dd #{user.email}
+      dt Name (Virtual Property):
+        dd #{user.name}
+      dt Birthday (Virtual Property):
+        dd #{user.dob_formatted}
+      dt Balance:
+        dd $#{user.balance}
+      dt Amount at Risk:
+        dd $#{user.ammountAtRisk}
+      dt Open Bets:
+        dd TODO
+      dt Address (Virtual Property):
+        dd #{user.address_formatted}
+

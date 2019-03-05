@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    h1 User Detail for #{user.name}
+
+    dl
+        dt User ID
+            dd #{user._id}
+        dt Full Name (Virtual property)
+            dd #{user.name}
+        dt Email
+            dd #{user.email}
+        dt Password (in the future this will be a hash)
+            dd #{user.password}
+        dt Date of Birth (Virtual property)
+            dd #{user.dob_formatted}
+        dt Balance
+            dd $#{user.balance}
+        dt Amount at Risk
+            dd $#{user.ammountAtRisk}
+        dt User Type
+            dd #{user.userType}
+        dt Language
+            dd #{user.language}
+        dt Address (Virtual property)
+            dd #{user.address_formatted}
+
+    a(href="/profile/list") Return
+    |  to list of all users

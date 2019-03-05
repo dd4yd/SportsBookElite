@@ -1,0 +1,51 @@
+extends layout
+
+block content
+	h1 Update Profile 
+
+	p This form will be used to update user information
+
+	form(method='POST' action='')
+		label(for='email') Email:
+		input(type='text', placeholder="email@domain.tld", name='email' value=user.email)
+		br
+		br
+		label(for='password') Current Password:
+		input(type='password', placeholder="Current password", name='current_password')
+		br
+		label(for='new_password') New Password:
+		input(type='password', placeholder="New password", name='new_password')
+		br
+		label(for='confirm_password') Confirm New Password:
+		input(type='password', placeholder="New password", name='confirm_new_password')
+		br
+		br
+		label(for='fname') First Name:
+		input(type='text', placeholder="John", name='fname' value=user.fname)
+		br
+		label(for='lname') Last Name:
+		input(type='text', placeholder="Doe", name='lname' value=user.lname)
+		br
+		br
+		label(for='dob') Date of Birth:
+		input(type='text', name='dob' value=user.dob_formatted)
+		br
+		br
+		label Address
+		br
+		input(type='text', name='address' placeholder="123 Main St.", value=user.address.address) 
+		br
+		input(type='text', name='city', placeholder="Columbia", value=user.address.city) 
+		br
+		input(type='text', name='state', placeholder="MO", value=user.address.state) 
+		br
+		input(type='text', name='zip', placeholder="65201", value=user.address.zip)
+		br
+		br
+		button(type='submit') Update 
+
+	if msg
+		p= msg 
+
+	p
+		a(href="/profile") Back

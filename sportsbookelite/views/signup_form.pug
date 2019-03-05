@@ -1,0 +1,35 @@
+extends layout
+
+block content
+	h1 Sign Up
+
+	p This will be the sign up form for the user to create an account.
+
+	form(method='POST' action='')
+		label(for='email') Email:
+		input(type='text', placeholder="email@domain.tld", name='email')
+		br
+		label(for='password') Password:
+		input(type='password', placeholder="password", name='password')
+		br
+		label(for='confirm_password') Confirm Password:
+		input(type='password', placeholder="password", name='confirm_password')
+		br
+		label(for='fname') First Name:
+		input(type='text', placeholder="John", name='fname')
+		br
+		label(for='lname') Last Name:
+		input(type='text', placeholder="Doe", name='lname')
+		br
+		label(for='dobm') Month:
+		input(type='text', placeholder="MM", name='dobm')
+		label(for='dobd') Day:
+		input(type='text', placeholder="DD", name='dobd')
+		label(for='doby') Year:
+		input(type='text', placeholder="YYYY", name='doby')
+		br
+		button(type='submit') Sign Up
+
+	if err
+		h3 The following error occured:
+		p= err
